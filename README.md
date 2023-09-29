@@ -69,7 +69,7 @@ ChatGPC recpmmended this format for bash: `#!/usr/bin/env bash`
 
 https://en.wikipedia.org/wiki/Shebang_(Unix)
 
-####Execution Considerations
+#### Execution Considerations
 
 When executing the bash script we can use the `./` shorthand notiation to execute the bash script.
 
@@ -79,7 +79,7 @@ If we are using a script in .gitpod.yaml we need to poiny the script to a progra
 eg. `source ./bin/install_terraform_cli`
 
 
-####Linux Considerations
+#### Linux Considerations
 
 In order to make our bash scripts executable we need to change permission for the fix to be exetuable at the user mode.
 
@@ -97,3 +97,35 @@ https://en.wikipedia.org/wiki/Chmod
 
 We need to be careful when using the Init because it will not rerun if we restart an existing workspace 
 https://www.gitpod.io/docs/configure/workspaces/workspace-lifecycle
+
+#### Working Env Vars
+
+We can list out all Enviroment Variables (Env Vars) usuing the env command
+
+We can filter specific env vars using grep eg. `env | grep AWS``
+
+Seting and Unseting Env Vars
+In the terminal we can set using export HELLO= 'world' In the terminal we unset using unset HELLO We can set an env var temporarily when just runnung a command
+
+HELLO='world' ./bin/print_message
+Within a bash script we can set env without writing export eg.
+
+#!/bin/env bash
+HELLO='world'
+
+echo $HELLO
+Printing Env Vars
+We can print env var using echo eg. echo $HELLO
+
+Scoping of Env Vars
+When you open up new bash terminals in VSCode it will not be aware of env avrs that you have set in another window.
+
+If you want to Env Vars to persist across all future bas terminals that are open you need to set env vars in your bash profile. eg. .bash_profile
+
+persisting Env Vars in Gitpod
+We can persist env var into gitpod by storing them in Gitpod Secrets Storage.
+
+gp env HELLO='world'
+All future workspaces launched will set the env vars for all bash terminals opened in thoes workspaces.
+
+You can also set vars in the .gitpod.yml but this can only contain non-senstibe env vars.
