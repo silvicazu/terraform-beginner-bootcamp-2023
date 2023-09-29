@@ -149,7 +149,7 @@ If it is succesfull you should see a json payload return that looks like this
 {
     "UserId": "AIDDREAGHYHOLI",
     "Account": "1234567891",
-    "Arn": "arn:aws:iam::1234567891:user/terraform-begginer-bootca
+    "Arn": "arn:aws:iam::1234567891:user/terr.....
 }
 ```
 
