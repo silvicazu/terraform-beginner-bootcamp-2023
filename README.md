@@ -105,7 +105,7 @@ We can list out all Enviroment Variables (Env Vars) usuing the env command
 We can filter specific env vars using grep eg. `env | grep AWS``
 
 Seting and Unseting Env Vars
-In the terminal we can set using export HELLO= 'world' In the terminal we unset using unset HELLO We can set an env var temporarily when just runnung a command
+In the terminal we can set using export HELLO = 'world' In the terminal we unset using unset HELLO We can set an env var temporarily when just runnung a command
 
 HELLO='world' ./bin/print_message
 Within a bash script we can set env without writing export eg.
@@ -155,7 +155,57 @@ If it is succesfull you should see a json payload return that looks like this
 
 We will need to generate AWS CLI credits from IAM User in order to user AWS CLI
 
+## Terrafrom Basics
+
+### Terraform Registry
+
+Terraform sources their providers and modules from the Terraform registry which located at [registry.terrafrom.io](https://registry.terraform.io/)
+
+- **Provider** is an interface to APIs that will allow to create resources in terraform.
+- **Modules** are a way to make a large amout of terraform code modular, portable and sharable.
+
+[Random Terraform Provider](https://registry.terraform.io/providers)
+
+#### Terraform Console
+
+We can see a list of all the Terraform commands by simply typing `terraform``
+
+#### Terraform Init 
+
+A the start of a new terraform project we will run `terraform init` to download the binries for the terraform providers that we'll use in this project.
+
+#### Terraform Plan
+
+`terraform plan`
+This will generate out a changeset, about the state of our infraestructure and what will be change.
+
+We can output this changeset ie. "plan" to be passed to an apply, but often you can just ignore outputting.
 
 
+#### Terraform Apply
+
+`terraform apply`
+This will run and pass the changeset to be excecute by terraform. Apply shoulg prompt yes or no.
+
+If we want to automatically approve an apply we can provide the auto approve flag eg. `terraform apply --auto-approve`
 
 
+### Terraform Lock Files
+
+`.terraform.lock.hcl` contains the locked versioning for the provider or modiles that should be used with this projects.
+
+The terraform Lock Files should be committed to you Version Control System (VSC) eg Github.
+
+### Terraform State Files
+
+`terraform.tfstate` contains information about the current state of your infraestructure.
+
+This file **should not be commited** to you VCS.
+
+This file can contain sensitive data. If you lose this file, you lose knowing the state of you infraestruture.
+
+`terraform.tfstate.backup` is the previous state file state.
+
+### Terraform Directory
+
+`.terraform` directory contains binaries 
