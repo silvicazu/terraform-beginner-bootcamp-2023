@@ -209,3 +209,7 @@ This file can contain sensitive data. If you lose this file, you lose knowing th
 ### Terraform Directory
 
 `.terraform` directory contains binaries 
+
+#### Terraform Destroy
+
+`terraform destroy` This will destroy resources, you can also use the auto approve flag ro skip the approve prompt eg.
