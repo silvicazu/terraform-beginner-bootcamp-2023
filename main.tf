@@ -1,4 +1,21 @@
 terraform {
+  /*backend "remote" {
+    hostname = "app.terraform.io"
+    organization = "silvicazu"
+
+    workspaces {
+      name = "terra-house-1"
+    }
+  }*/
+  
+   cloud {
+    organization = "silvicazu"
+
+    workspaces {
+      name = "terra-house-1"
+    }
+  }
+
   required_providers {
     random = {
       source = "hashicorp/random"
@@ -11,8 +28,11 @@ terraform {
   } 
 }
 
-
 provider "random" {
+  # Configuration options
+}
+
+provider "aws" {
   # Configuration options
 }
 
@@ -45,3 +65,6 @@ output "random_bucket_name_id"{
 output "random_bucket_name_result"{
   value = random_string.bucket_name.result   
 }
+
+
+

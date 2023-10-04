@@ -213,3 +213,33 @@ This file can contain sensitive data. If you lose this file, you lose knowing th
 #### Terraform Destroy
 
 `terraform destroy` This will destroy resources, you can also use the auto approve flag ro skip the approve prompt eg.
+
+
+## Issues with Terraform Cloud Login and Gitpod Workspace
+
+When attemping to run `terrafomr login` it will launch bash a wiswing view to generate a token. However it does not work expected in Gitpod VsCode in the browser.
+
+The workaround is manually generate a token in Terraform Cloud
+
+```
+https://app.terraform.io/app/settings/tokens?source=terraform-login
+```
+
+Then create the file manually here:
+
+```sh
+touch /home/gitpod/.terraform.d/credentials.tfrc.json 
+```
+
+Provide the following code (to replace the token in the file)
+
+```json
+{
+    "credentials":{
+        "app.terraform.io":{
+            "token":"YOUR-TERRAFORM-CLOUD-TOKEN"
+        }
+    }
+}
+```
+
