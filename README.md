@@ -243,3 +243,4 @@ Provide the following code (to replace the token in the file)
 }
 ```
 
+We have automated this workaround with the following bash scrip [bin/generate_tfrc_credentials](bin/generate_tfrc_credentials)
