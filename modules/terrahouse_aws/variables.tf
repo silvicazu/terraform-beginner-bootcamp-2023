@@ -41,7 +41,7 @@ variable "error_html_filepath" {
 }
 
 variable "content_version" {
-  description = "The content version. Should be a positive integer starting at 1."
+  description = "The content version should be a positive integer starting at 1."
   type        = number
 
   validation {
